@@ -10,4 +10,4 @@ When my answer is given, the data is stored and my choice is compared to the log
 From there, I can continue to answer more scenerios, look at my history of scenerios/anwswers, or can create my own scenerios.
 ```
 
-![Wireframe](.\images\KU-CBC-Project-2-Trolley-Turmoil.jpg)
+![Wireframe](images/KU-CBC-Project-2-Trolley-Turmoil.jpg)
