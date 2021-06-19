@@ -4,6 +4,7 @@
   "description": "## User Story",
   "main": "server.js",
   "scripts": {
+    "tailwind": "npx tailwindcss -o ./public/css/tailwind.css --jit --purge `./views/**/*.handlebars` --watch",
     "test": "jest",
     "start": "node server.js",
     "watch": "nodemon server.js",
