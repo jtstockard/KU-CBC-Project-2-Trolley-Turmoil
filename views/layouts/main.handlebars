@@ -1,10 +1,10 @@
 <html lang="en">
-
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Registry</title>
     <link rel="stylesheet" href="/css/jass.css" />
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" />
   </head>
   <!-- GRANT, THIS IS WHERE WE WILL PUT YOUR NAV BAR WITH MODAL BUTTONS -->
   <!-- HERE WE NEED TO PUT OUR NAVBAR SO THAT WE SEE IT ON EVERY PAGE -->
@@ -14,23 +14,16 @@
         User Registry
       </h1>
       <!-- TODO: Add a comment describing the functionality of this helper -->
-      {{#if logged_in}}
-        <nav>
-          <button class="btn" id="logout">logout</button>
-        </nav>
-      {{/if}}
+      //{{#if logged_in}}
+        //<nav>
+          //<button class="btn" id="logout">logout</button>
+        //</nav>
+      //{{/if}}
     </header>
     <main class="container container-fluid mt-5">
       {{{body}}}
     </main>
-    <footer>
-
-    </footer>
-
-    <!-- TODO: Add a comment describing the functionality of this helper -->
-    {{#if logged_in}}
-      <script src="/js/logout.js"></script>
-    {{/if}}
-  </body>
-
+  <footer>   
+  </footer>
+</body>
 </html>
