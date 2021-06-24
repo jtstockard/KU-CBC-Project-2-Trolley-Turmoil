@@ -64,3 +64,13 @@ header,
   .carousel-bullet {
   color: #2b6cb0; /*Set to match the Tailwind colour you want the active one to be */
 }
+.btn-no-style {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 100%;
+  transition: color 0.1s;
+  margin-left: 16px;
+}
