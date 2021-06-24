@@ -32,6 +32,9 @@
     "sequelize": "^5.21.13"
   },
   "devDependencies": {
-    "jest": "^26.0.1"
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^6.15.0",
+    "jest": "^26.0.1",
+    "prettier": "^2.3.1"
   }
 }
