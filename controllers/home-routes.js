@@ -3,7 +3,10 @@ const { User } = require("../models");
 
 router.get("/", async (req, res) => {
   console.log("Rendering homepage");
-  res.render("homepage");
+  res.render("homepage", {
+    loggedIn: req.session.loggedIn,
+    username: req.session.username
+  });
   //   try {
   //     // Get all users, sorted by name
   //     const userData = await User.findAll({
@@ -40,8 +43,12 @@ router.get("/login", async (req, res) => {
   //     res.status(500).json(err);
   //   }
 });
-
-router.get("/profile", async (req, res) => {
+router.get("/register", (req, res) => {
+res.render("register", {
+  loggedIn: req.session.loggedIn
+})
+})
+router.get("/profile", (req, res) => {
 
   res.render("profile", {
     loggedIn: req.session.loggedIn

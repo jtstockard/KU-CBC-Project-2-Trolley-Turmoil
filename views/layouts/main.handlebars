@@ -24,15 +24,19 @@
             {{else}} <a href="/login" id="login-btn" class="btn btn-dark">Login</a>
 
             {{/if}}
-            <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+            <a href="/register" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
               Register
             </a>
-            <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+            <a href="/profile" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
               My Profile
             </a>
           </div>
         </div>
       </nav>
+      {{#if loggedIn}}
+      {{username}}
+      {{/if}}
+      {{!-- 
     {{!-- <header class="display-flex justify-space-between align-center p-2">
       <h1>
         User Registry
