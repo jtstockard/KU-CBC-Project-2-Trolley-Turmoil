@@ -21,9 +21,9 @@ router.get("/", async (req, res) => {
   //   }
 });
 
-router.get("/loggedin", async (req, res) => {
-  console.log("Rendering Logged In Page");
-  res.render("loggedIn");
+router.get("/login", async (req, res) => {
+  console.log("Rendering Login Page");
+  res.render("login");
   //   try {
   //     // Get all users, sorted by name
   //     const userData = await User.findAll({
