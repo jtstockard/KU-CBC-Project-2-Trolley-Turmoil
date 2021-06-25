@@ -18,7 +18,12 @@
         </div>
         <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
           <div class="text-sm lg:flex-grow">
-             <button type="submit" id="login-btn" class="btn btn-dark">Login</button>
+            {{#if loggedIn}} 
+            <button id="logout-btn" class="btn btn-dark">Logout</button>
+            <script src="/js/logout.js"></script>
+            {{else}} <a href="/login" id="login-btn" class="btn btn-dark">Login</a>
+
+            {{/if}}
             <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
               Register
             </a>
@@ -55,5 +60,4 @@ var app = new Vue({
   }
 })
   </body>
-  <script src="/js/login.js"></script>
 </html>
