@@ -19,15 +19,15 @@
         <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
           <div class="text-sm lg:flex-grow">
             {{#if loggedIn}} 
-            <button id="logout-btn" class="btn btn-dark">Logout</button>
+            <button id="logout-btn" class="block mt-4 mr-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">Logout</button>
             <script src="/js/logout.js"></script>
-            {{else}} <a href="/login" id="login-btn" class="btn btn-dark">Login</a>
-
-            {{/if}}
-            <a href="/register" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+            {{else}} 
+            <a href="/login" id="login-btn" class="block mt-4 mr-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">Login</a>
+            <a href="/register" class="block mt-4 mr-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
               Register
             </a>
-            <a href="/profile" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+            {{/if}}
+            <a href="/profile" class="block mt-4 mr-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
               My Profile
             </a>
           </div>
