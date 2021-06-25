@@ -1,11 +1,24 @@
 const router = require("express").Router();
+const sequelize = require("../../config/connection");
 const { Question } = require("../../models");
+
 router.get("/", (req, res) => {
   console.log("Getting Questions");
   Question.findAll({}).then(dbData => {
     const randomIndex = Math.floor(Math.random()*dbData.length)
     res.status(200).json(dbData[randomIndex]);
   })
+});
+router.get("/random-answerable", (req, res) => {
+  console.log("Getting Random Answerable Question (that has not been answered yet)");
+  // SELECT * 
+  // FROM questions
+  // WHERE questions.id NOT IN (SELECT question_id FROM answers WHERE answers.user_id = #{loggedInUser.id})
+  // ORDER BY RAND()
+  // LIMIT 1; 
+  Question.findOne({order: sequelize.random()}).then(dbData => {
+    res.status(200).json(dbData);
+  });
 });
 // router.post("/login", async (req, res) => {
 //   try {
