@@ -2,7 +2,10 @@ const router = require("express").Router();
 const { Question } = require("../../models");
 router.get("/", (req, res) => {
   console.log("Getting Questions");
-  res.status(200).send("Sucessful Connection");
+  Question.findAll({}).then(dbData => {
+    const randomIndex = Math.floor(Math.random()*dbData.length)
+    res.status(200).json(dbData[randomIndex]);
+  })
 });
 // router.post("/login", async (req, res) => {
 //   try {
