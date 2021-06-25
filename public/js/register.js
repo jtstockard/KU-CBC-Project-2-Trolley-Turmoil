@@ -1,7 +1,22 @@
- // Get references to our form and input
+const registerForm = document.getElementById("register-form")
 
- // When the signup button is clicked, validate that the email and password fields are not blank
+registerForm.addEventListener("submit", (e) => {
+    e.preventDefault()
 
- // If we have an email and password, run the signUpUser function
-
- // Do a post to the signup route. If successful, redirect to home page, otherwise log any errors
+    const newName = document.getElementById("name-register")
+    const newEmail = document.getElementById("email-register")
+    const newPassword = document.getElementById("password-register")
+    const newUser = {username: newName.value, email: newEmail.value, password: newPassword.value}
+    fetch("/api/users", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    
+      body: JSON.stringify(newUser)
+  
+    })
+    .then(response => response.json())
+    .then(data => console.log(data));
+    
+})
