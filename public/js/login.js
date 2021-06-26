@@ -49,3 +49,7 @@ document.querySelector(".btn").addEventListener("submit", loginFormHandler);
 document
   .querySelector(".login-form")
   .addEventListener("submit", signupFormHandler);
+
+  $('#loginBtn').click(function(){
+    window.location.href="/"
+  })

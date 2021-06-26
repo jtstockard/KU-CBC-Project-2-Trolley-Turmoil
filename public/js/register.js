@@ -20,3 +20,7 @@ registerForm.addEventListener("submit", (e) => {
     .then(data => console.log(data));
     
 })
+
+$('#registerBtn').click(function(){
+  window.location.href="/login"
+})
