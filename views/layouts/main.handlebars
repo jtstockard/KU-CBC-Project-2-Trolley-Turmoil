@@ -10,14 +10,15 @@
       href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
     />
   </head>
-  <body>
+  <body class="bg-blue-100">
     <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
         <div class="flex items-center flex-shrink-0 text-white mr-6">
           <span class="font-semibold text-xl tracking-tight">Trolley Turmoil</span>
         </div>
+        
         </div>
         <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-          <div class="text-sm lg:flex-grow">
+          
             {{#if loggedIn}} 
             <button id="logout-btn" class="block mt-4 mr-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">Logout</button>
             <script src="/js/logout.js"></script>
@@ -30,12 +31,15 @@
             <a href="/profile" class="block mt-4 mr-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
               My Profile
             </a>
-          </div>
+            
+                  
+          
         </div>
+            <div class="flex justify-end">{{#if loggedIn}}
+      <p class="text-white">Welcome, {{username}}!</p>
+      {{/if}}</div>
       </nav>
-      {{#if loggedIn}}
-      {{username}}
-      {{/if}}
+      
       {{!-- 
     {{!-- <header class="display-flex justify-space-between align-center p-2">
       <h1>
