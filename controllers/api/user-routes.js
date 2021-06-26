@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const { User, History } = require("../../models");
+const { User, History , Answer} = require("../../models");
+const { findAll } = require("../../models/User");
 const withAuth = require("../../utils/auth");
 
 // GET /api/users
@@ -68,6 +69,10 @@ router.post("/login", (req, res) => {
     where: {
       email: req.body.email,
     },
+    include: [{
+      model: Answer
+    }],
+    plain: true
   }).then((dbUserData) => {
     if (!dbUserData) {
       res.status(400).json({ message: "Incorrect email or password!" });
@@ -80,27 +85,30 @@ router.post("/login", (req, res) => {
       res.status(400).json({ message: "Incorrect email or password!" });
       return;
     }
+    const user = dbUserData.get({
+      plain: true
+    })
+    console.log(user)
 
     req.session.save(() => {
       // declare session variables
-      req.session.user_id = dbUserData.id;
-      req.session.username = dbUserData.username;
-      req.session.loggedIn = true;
-
-      res.json({ user: dbUserData, message: "You are now logged in!" });
+      req.session.user_id = user.id;
+      req.session.username = user.username;
+      req.session.answers = user.answers;
+  
+      res.status(200).end();
     });
-  });
-});
-
-router.post("/logout", (req, res) => {
-  if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      res.status(204).end();
     });
-  } else {
-    res.status(404).end();
-  }
-});
+    });
+      router.post("/logout", (req, res) => {
+        if (req.session.loggedIn) {
+          req.session.destroy(() => {
+            res.status(204).end();
+          });
+        } else {
+          res.status(404).end();
+        }
+      });
 
 // PUT /api/users/1
 router.put("/:id", withAuth, (req, res) => {
