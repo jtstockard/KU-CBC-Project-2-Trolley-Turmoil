@@ -1,12 +1,31 @@
 const router = require("express").Router();
-const { User } = require("../models");
+const { User , Question} = require("../models");
+const { Op } = require("sequelize");
 
 router.get("/", async (req, res) => {
   console.log("Rendering homepage");
-  res.render("homepage", {
-    loggedIn: req.session.loggedIn,
-    username: req.session.username
-  });
+  const questionIds = req.session.answers.map(answer => {
+    return answer.question_id
+  })
+  console.log(req.session)
+  console.log(questionIds)
+   Question.findAll({
+      where: { 
+        [Op.not]: [{
+          id: [...questionIds]
+        }]
+      },
+      raw: true
+    })
+   .then((dbQuestionData) => {
+
+     console.log("List of questions:", dbQuestionData)
+     res.render("homepage", {
+       loggedIn: req.session.loggedIn,
+       username: req.session.username,
+       questions: dbQuestionData
+     });
+});
   //   try {
   //     // Get all users, sorted by name
   //     const userData = await User.findAll({

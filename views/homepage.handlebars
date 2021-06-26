@@ -14,12 +14,7 @@
 able to select questions
 records in profile
 -->
-<div class="w3-container"> 
-  <h1 class="flex justify-center">Question:</h1>
-  <br>
-  <h2 class="flex justify-center">Question Text Here.</h2>
-  <br>
-</div>
+{{/if}}
 
 
 <div class="carousel relative shadow-2xl bg-white">
@@ -74,10 +69,17 @@ You will be given a question and two choices. You then must decide which outcome
       checked="checked"
     />
     <div class="carousel-item absolute opacity-0" style="height:50vh;">
-      <answers class="flex justify-center justify-around text-2xl">
-        <button id="answerable-question-choice-1"></button>
-        <button class="flex justify-end text-2xl" id="answerable-question-choice-2"></button>
-        </answers>
+     
+        {{#each questions as |question|}}
+         <div class="flex justify-center justify-around text-2xl question-container" data-questionId="{{question.id}}"> <!-- Tells us what page we need a request for based on what user has clicked -->
+           <p>Would you rather 
+            <span id="answerable-question-choice-1">{{question.first_choice}}</span> or <span class="flex justify-end text-2xl" id="answerable-question-choice-2">{{question.second_choice}}</span>
+            </p>
+          </div>
+        {{/each}}
+        {{!-- <button id="answerable-question-choice-1"></button>
+        <button class="flex justify-end text-2xl" id="answerable-question-choice-2"></button> --}}
+      
       <div class="relative"
         class="block h-full w-full bg-white text-black text-5xl text-center"
       ><p class="absolute"></p><?xml version="1.0" encoding="utf-8"?>
@@ -208,7 +210,6 @@ records in profile
   <p id="answerable-question-choice-2"></p>
 </div>
 {{/if}} --}}
-{{/if}}
 
 <link
   rel="stylesheet"
