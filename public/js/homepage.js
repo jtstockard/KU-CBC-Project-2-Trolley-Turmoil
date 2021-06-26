@@ -7,9 +7,18 @@ fetch("/api/questions/random-answerable")
     showQuestion(data);
   });
 
-function showQuestion(question){
-  questionElement = document.getElementById('answerable-question-choice-1');
-  questionElement.innerHTML = question.first_choice;
-  questionElement = document.getElementById('answerable-question-choice-2');
-  questionElement.innerHTML = question.second_choice;
+  
+ if(req.params.loggedIn) === true => {
+    function showQuestion(question){
+        questionElement = document.getElementById('answerable-question-choice-1');
+        questionElement.innerHTML = question.first_choice;
+        questionElement = document.getElementById('answerable-question-choice-2');
+        questionElement.innerHTML = question.second_choice;
+ }
+
+// function showQuestion(question){
+//   questionElement = document.getElementById('answerable-question-choice-1');
+//   questionElement.innerHTML = question.first_choice;
+//   questionElement = document.getElementById('answerable-question-choice-2');
+//   questionElement.innerHTML = question.second_choice;
 };
