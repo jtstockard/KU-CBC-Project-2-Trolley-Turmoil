@@ -31,13 +31,13 @@ router.post('/profile', (req, res) => {
     first_choice: req.body.first_choice,
     second_choice: req.body.second_choice,
   }).then((dbQuestionData) => {
-    req.session.save(() => {
-      req.session.first_choice = dbQuestionData.first_choice;
-      req.session.second_choice = dbQuestionData.second_choice;
-      req.session.loggedIn = true;
+    //   req.session.save(() => {
+    //     req.session.first_choice = dbQuestionData.first_choice;
+    //     req.session.second_choice = dbQuestionData.second_choice;
+    //     req.session.loggedIn = true;
 
-      res.json(dbQuestionData);
-    });
+    res.json(dbQuestionData);
+    //  });
   });
 });
 

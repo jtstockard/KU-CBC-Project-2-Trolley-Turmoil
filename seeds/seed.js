@@ -23,3 +23,5 @@ const seedDatabase = async () => {
 };
 
 seedDatabase();
+
+module.exports = seedDatabase;

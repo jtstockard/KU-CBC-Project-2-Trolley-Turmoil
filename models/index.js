@@ -1,5 +1,4 @@
 const User = require('./User');
-const Project = require('./Project');
 const Question = require('./Questions');
 const Answer = require('./Answer');
 
@@ -17,7 +16,7 @@ User.hasMany(Question, {
 });
 Question.hasMany(Answer, {
   foreignKey: 'question_id',
-})
+});
 Answer.belongsTo(Question, {
   foreignKey: 'question_id',
 });

@@ -1,6 +1,6 @@
 const questionForm = document.getElementById('question-form');
 
-questionForm.addEventListener('submit', (e) => {
+questionForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   if (e.target.hasAttribute('user-id')) {
     const id = e.target.getAttribute('user-id');
