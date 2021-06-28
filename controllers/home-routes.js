@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const { User, Question } = require('../models');
-const { Op } = require('sequelize');
+// const { Op } = require('sequelize');
 
 router.get('/', async (req, res) => {
   console.log('Rendering homepage');
   if (!req.session.loggedIn) {
-    res.render('login');
+    return res.render('login');
   }
 
   if (req.session.answers) {
@@ -13,14 +13,7 @@ router.get('/', async (req, res) => {
       return answer.question_id;
     });
   }
-  Question.findAll({
-    // where: {
-    //   [Op.not]: [{
-    //     id: [...questionIds]
-    //   }]
-    // },
-    raw: true,
-  }).then((dbQuestionData) => {
+  Question.findAll().then((dbQuestionData) => {
     console.log('List of questions:', dbQuestionData);
     res.render('homepage', {
       loggedIn: req.session.loggedIn,
