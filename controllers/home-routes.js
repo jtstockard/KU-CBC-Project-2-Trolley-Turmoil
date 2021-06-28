@@ -64,6 +64,7 @@ router.get('/register', (req, res) => {
   });
 });
 router.get('/profile/:id', async (req, res) => {
+  console.log('profile page');
   const userData = await User.findByPk(req.params.id, {
     attributes: {
       exclude: ['password'],
@@ -72,11 +73,19 @@ router.get('/profile/:id', async (req, res) => {
   const id = req.session.id;
   const username = req.session.username;
   const user = userData.get({ plain: true });
+  console.log("User ID: #{req.session.user_id}");
+  const userQuestions = await Question.findAll({
+    where: {user_id: req.session.user_id}
+  }).map((question) => {
+    return {first_choice: question.first_choice, second_choice: question.second_choice };
+  });
+  console.log(userQuestions);
   res.render('profile', {
     id,
     user,
     username,
     loggedIn: true,
+    userQuestions: userQuestions
   });
 });
 module.exports = router;

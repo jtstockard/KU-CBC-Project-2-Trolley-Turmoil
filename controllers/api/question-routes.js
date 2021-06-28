@@ -23,13 +23,14 @@ router.get('/random-answerable', (req, res) => {
     res.status(200).json(dbData);
   });
 });
-router.post('/profile', (req, res) => {
+router.post('/', (req, res) => {
   console.log('creating your question');
   console.log(req.body);
 
   Question.create({
     first_choice: req.body.first_choice,
     second_choice: req.body.second_choice,
+    user_id: req.session.user_id
   }).then((dbQuestionData) => {
     //   req.session.save(() => {
     //     req.session.first_choice = dbQuestionData.first_choice;
