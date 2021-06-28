@@ -4,7 +4,7 @@ fetch('/api/questions/random-answerable')
   .then((response) => response.json())
   .then((data) => {
     console.log(data);
-    // showQuestion(data);
+    showQuestion(data);
   });
 
 
