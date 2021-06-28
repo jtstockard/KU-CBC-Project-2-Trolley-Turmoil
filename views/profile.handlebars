@@ -1,4 +1,17 @@
 {{#if loggedIn}}
+  <div class="mb-10">
+    <h3>Your Questions</h3>
+    <ul id="user-created-questions">
+      {{#each userQuestions}}
+        <li>
+          {{first_choice}} VS {{second_choice}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+
+  <hr />
+
   <form id='question-form' class='form question-form'>
     <div class='form-group'>
       <h1>Create your own questions</h1>
