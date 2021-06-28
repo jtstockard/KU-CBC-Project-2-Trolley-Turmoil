@@ -1,0 +1,45 @@
+<rules
+  class='flex justify-center pt-6'
+  x-data="{ 'isDialogOpen': false }"
+  @keydown.escape='isDialogOpen = false'
+>
+
+  <button
+    type='button'
+    class='border p-2 bg-white hover:border-gray-500 object-none object-center'
+    @click='isDialogOpen = true'
+  >How to play?</button>
+
+  <!-- overlay -->
+  <div
+    class='overflow-auto'
+    style='background-color: rgba(0,0,0,0.5)'
+    x-show='isDialogOpen'
+    :class="{ 'absolute inset-0 z-10 flex items-start justify-center': isDialogOpen }"
+  >
+    <!-- dialog -->
+    <div
+      class='bg-white shadow-2xl m-4 sm:m-8 pt-500'
+      x-show='isDialogOpen'
+      @click.away='isDialogOpen = false'
+    >
+      <div class='flex justify-between items-center border-b p-2 text-xl'>
+        <h6 class='text-xl font-bold justify-center'>Instructions</h6>
+        <button type='button' @click='isDialogOpen = false'>✖</button>
+      </div>
+      <div class='p-2'>
+        <aside class='max-w-lg mt-4 p-4 bg-yellow-100 border border-yellow-500'>
+          <p class='text-center'>
+            You will be given a question and two choices. You then must decide
+            which outcome will happen by clicking on the corresponding button.
+            After your choice you will see what the other users picked also. In
+            your profile page you will be able to see your past choices and even
+            add your own scenarios! Ready to get started? Go ahead and click the
+            register button if you are a new user or click Log In if you are a
+            returning user.</p>
+        </aside>
+      </div>
+    </div><!-- /dialog -->
+  </div><!-- /overlay -->
+
+</rules>
