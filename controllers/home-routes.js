@@ -10,11 +10,11 @@ router.get("/", async (req, res) => {
   console.log(req.session)
   console.log(questionIds)
    Question.findAll({
-      where: { 
-        [Op.not]: [{
-          id: [...questionIds]
-        }]
-      },
+      // where: { 
+      //   [Op.not]: [{
+      //     id: [...questionIds]
+      //   }]
+      // },
       raw: true
     })
    .then((dbQuestionData) => {
