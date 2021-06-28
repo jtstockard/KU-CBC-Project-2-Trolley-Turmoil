@@ -7,14 +7,12 @@ router.get('/', async (req, res) => {
   if (!req.session.loggedIn) {
     res.render('login');
   }
-  let questionIds;
+
   if (req.session.answers) {
-    questionIds = req.session.answers.map((answer) => {
+  const questionIds = req.session.answers.map((answer) => {
       return answer.question_id;
     });
   }
-  console.log(req.session);
-  console.log(questionIds);
   Question.findAll({
     // where: {
     //   [Op.not]: [{
