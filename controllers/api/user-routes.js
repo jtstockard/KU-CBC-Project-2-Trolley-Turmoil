@@ -43,25 +43,25 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// POST /api/users
-router.post('/', (req, res) => {
-  console.log('creating a user');
-  console.log(req.body);
+// // POST /api/users
+// router.post('/', (req, res) => {
+//   console.log('creating a user');
+//   console.log(req.body);
 
-  User.create({
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password,
-  }).then((dbUserData) => {
-    req.session.save(() => {
-      req.session.user_id = dbUserData.id;
-      req.session.username = dbUserData.username;
-      req.session.loggedIn = true;
+//   User.create({
+//     username: req.body.username,
+//     email: req.body.email,
+//     password: req.body.password,
+//   }).then((dbUserData) => {
+//     req.session.save(() => {
+//       req.session.user_id = dbUserData.id;
+//       req.session.username = dbUserData.username;
+//       req.session.loggedIn = true;
 
-      res.json(dbUserData);
-    });
-  });
-});
+//       res.json(dbUserData);
+//     });
+//   });
+// });
 
 // LOGIN
 router.post('/login', (req, res) => {
@@ -106,7 +106,7 @@ router.post('/login', (req, res) => {
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
-      res.status(204).render('login');
+      res.status(204).end();
     });
   } else {
     res.status(404).end();
