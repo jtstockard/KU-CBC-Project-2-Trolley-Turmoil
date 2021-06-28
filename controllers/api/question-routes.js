@@ -1,23 +1,42 @@
-const router = require("express").Router();
-const sequelize = require("../../config/connection");
-const { Question } = require("../../models");
+const router = require('express').Router();
+const sequelize = require('../../config/connection');
+const { Question } = require('../../models');
 
-router.get("/", (req, res) => {
-  console.log("Getting Questions");
-  Question.findAll({}).then(dbData => {
-    const randomIndex = Math.floor(Math.random()*dbData.length)
+router.get('/', (req, res) => {
+  console.log('Getting Questions');
+  Question.findAll({}).then((dbData) => {
+    const randomIndex = Math.floor(Math.random() * dbData.length);
     res.status(200).json(dbData[randomIndex]);
-  })
+  });
 });
-router.get("/random-answerable", (req, res) => {
-  console.log("Getting Random Answerable Question (that has not been answered yet)");
-  // SELECT * 
+router.get('/random-answerable', (req, res) => {
+  console.log(
+    'Getting Random Answerable Question (that has not been answered yet)'
+  );
+  // SELECT *
   // FROM questions
   // WHERE questions.id NOT IN (SELECT question_id FROM answers WHERE answers.user_id = #{loggedInUser.id})
   // ORDER BY RAND()
-  // LIMIT 1; 
-  Question.findOne({order: sequelize.random()}).then(dbData => {
+  // LIMIT 1;
+  Question.findOne({ order: sequelize.random() }).then((dbData) => {
     res.status(200).json(dbData);
+  });
+});
+router.post('/profile', (req, res) => {
+  console.log('creating your question');
+  console.log(req.body);
+
+  Question.create({
+    first_choice: req.body.first_choice,
+    second_choice: req.body.second_choice,
+  }).then((dbQuestionData) => {
+    req.session.save(() => {
+      req.session.first_choice = dbQuestionData.first_choice;
+      req.session.second_choice = dbQuestionData.second_choice;
+      req.session.loggedIn = true;
+
+      res.json(dbQuestionData);
+    });
   });
 });
 // router.post("/login", async (req, res) => {
