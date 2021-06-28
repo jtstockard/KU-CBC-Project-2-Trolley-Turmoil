@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" />
+    <title>Trolley Turmoil</title>
+</head>
+<body>
+    <nav class="flex items-center flex-wrap bg-teal-500 p-6">
+        <div class="flex items-center flex-shrink-0 text-white mr-6">
+          <span class="font-semibold text-6xl tracking-tight">Trolley Turmoil</span>
+        </div>
+        </div>
+        <modal id="app" class="h-8% bg-white-100 overflow-hidden" x-data="{ showModal1: false, showModal2: false, showModal3: false }" :class="{'overflow-y-hidden': showModal1 || showModal2 || showModal3}">
+            <main class="h-7% w-80% flex flex-col sm:flex-row justify-center items-center">
+              <button
+                class="bg-red-600 font-semibold text-white p-2 w-32 rounded-full hover:bg-red-700 focus:outline-none focus:ring shadow-lg hover:shadow-none transition-all duration-300 m-2"
+                @click="showModal1 = true">
+                Log Out
+              </button>
+            </main>
+      </nav>
+<body>
+  <div class="p-10">  
+    <!--Card 1-->
+    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+      <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2">User Generated Scenerios</div>
+        <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste rerum ea dolorem atque odio. Laborum veritatis, ullam recusandae rerum, sunt accusamus similique officia, illum vitae minus dolor? Tempore, dignissimos a!</p>
+      </div>
+      <div class="px-6 pt-4 pb-2">
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+</body>
+</html>

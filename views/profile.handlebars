@@ -1,0 +1,17 @@
+{{#if loggedIn}}
+  <form id='question-form' class='form question-form'>
+    <div class='form-group'>
+      <h1>Create your own questions</h1>
+      <label for='firstChoice-register'>First Choice:</label>
+      <input class='form-input' type='text' id='firstChoice-register' />
+    </div>
+    <div class='form-group'>
+      <label for='secondChoice-register'>Second Choice:</label>
+      <input class='form-input' type='text' id='secondChoice-register' />
+    </div>
+    <div class='form-group'>
+      <button class='btn btn-primary' type='submit'>submit</button>
+    </div>
+  </form>
+  <script src='/js/profile.js'></script>
+{{/if}}
