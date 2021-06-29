@@ -2,7 +2,7 @@ const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const { Question } = require('../../models');
 const seedQuestions = require('../../seeds/questions-seeds');
-
+const { Op } = require('sequelize');
 router.get('/', (req, res) => {
   console.log('Getting Questions');
   Question.findAll({}).then((dbData) => {
@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     res.status(200).json(dbData[randomIndex]);
   });
 });
-router.get('/random-answerable', (req, res) => {
+router.post('/random-answerable', (req, res) => {
   console.log(
     'Getting Random Answerable Question (that has not been answered yet)'
   );
@@ -19,7 +19,14 @@ router.get('/random-answerable', (req, res) => {
   // WHERE questions.id NOT IN (SELECT question_id FROM answers WHERE answers.user_id = #{loggedInUser.id})
   // ORDER BY RAND()
   // LIMIT 1;
-  Question.findOne({ order: sequelize.random() }).then((dbData) => {
+  Question.findOne({ 
+    order: sequelize.random(),
+    where: {
+      id: {
+        [Op.notIn]: req.body,
+      }
+    }
+   }).then((dbData) => {
     res.status(200).json(dbData);
   });
 });
