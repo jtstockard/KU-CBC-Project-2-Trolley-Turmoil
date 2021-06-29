@@ -1,28 +1,7 @@
-{{!-- {{#each users as |user| }}
-<div class="row align-center mb-5">
-  <div class="col-md-6">
-    <h2>{{{get_emoji}}} {{user.name}}</h2>
-  </div>
-  <div class="col-md-6">
-    <h3><a href="mailto:{{user.email}}">{{user.email}}</a></h3>
-  </div>
-</div>
-{{/each}} --}}
 {{#if loggedIn}} 
-<!--
-  box for the questions 
-able to select questions
-records in profile
--->
 <div class="w3-container"> 
   {{> instructions}}
-  {{!-- <h1 class="flex justify-center">Question:</h1>
   <br>
-  <h2 class="flex justify-center">Question Text Here.</h2>
-  <br>
-  <p id="answerable-question-choice-1"></p>
-  <p id="answerable-question-choice-2"></p> --}}
-</div>
 {{/if}}
 
 <div class="carousel relative shadow-2xl bg-white">
@@ -51,8 +30,8 @@ records in profile
     
         {{#each questions as |question|}}
          <div class="flex justify-center justify-around text-2xl question-container" data-questionId="{{question.id}}"> <!-- Tells us what page we need a request for based on what user has clicked -->
-           <p>Would you rather save 
-            <span id="answerable-question-choice-1">{{question.first_choice}}</span> or <span class="flex justify-end text-2xl" id="answerable-question-choice-2">{{question.second_choice}}</span>
+           {{!-- <p>Would you rather save  --}}
+            {{!-- <span id="answerable-question-choice-1">{{question.first_choice}}</span> or <span class="flex justify-end text-2xl" id="answerable-question-choice-2">{{question.second_choice}}</span> --}}
             </p>
           </div>
         {{/each}}
@@ -151,7 +130,7 @@ records in profile
       class="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto"
     >›</label>
 
-    <!-- Add additional indicators for each slide-->
+    {{!-- <!-- Add additional indicators for each slide-->
     <ol class="carousel-indicators">
       <li class="inline-block mr-3">
         <label
@@ -171,7 +150,7 @@ records in profile
           class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700"
         >•</label>
       </li>
-    </ol>
+    </ol> --}}
 
   </div>
 </div>
