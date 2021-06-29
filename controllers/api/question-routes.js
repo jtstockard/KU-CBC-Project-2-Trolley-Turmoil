@@ -24,21 +24,12 @@ router.get('/random-answerable', (req, res) => {
   });
 });
 router.post('/', (req, res) => {
-  console.log('creating your question');
-  console.log(req.body);
-
   Question.create({
     first_choice: req.body.first_choice,
     second_choice: req.body.second_choice,
     user_id: req.session.user_id
   }).then((dbQuestionData) => {
-    //   req.session.save(() => {
-    //     req.session.first_choice = dbQuestionData.first_choice;
-    //     req.session.second_choice = dbQuestionData.second_choice;
-    //     req.session.loggedIn = true;
-
     res.json(dbQuestionData);
-    //  });
   });
 });
 

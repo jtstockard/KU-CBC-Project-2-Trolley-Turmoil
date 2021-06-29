@@ -1,7 +1,7 @@
 {{#if loggedIn}}
   <div class="mb-10">
     <h3>Your Questions</h3>
-    <ul id="user-created-questions">
+    <ul id="user-created-questions" class="list-disc ml-10 italic tracking-wide">
       {{#each userQuestions}}
         <li>
           {{first_choice}} VS {{second_choice}}
@@ -24,7 +24,7 @@
       <input placeholder="Example 2: Your celebrity crush" class='form-input' type='text' id='secondChoice-register' />
     </div>
     <div class='form-group'>
-      <button class='btn btn-primary' type='submit'>submit</button>
+      <button class='btn btn-primary' type='submit'>Submit</button>
     </div>
   </form>
   <script src='/js/profile.js'></script>
