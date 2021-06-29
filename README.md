@@ -1,4 +1,4 @@
-# Project 1: Trolley Turmoil
+# Project 2: Trolley Turmoil
 
 ## Project Goal
 
