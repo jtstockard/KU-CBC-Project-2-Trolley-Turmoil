@@ -1,0 +1,52 @@
+<rules
+  class='flex justify-center pt-6'
+  x-data="{ 'isDialogOpen': false }"
+  @keydown.escape='isDialogOpen = false'
+>
+
+  <button
+    type='button'
+    class='border p-2 bg-white hover:border-gray-500 object-none object-center'
+    @click='isDialogOpen = true'
+  >How to play?</button>
+
+  <!-- overlay -->
+  <div
+    class='overflow-auto'
+    style='background-color: rgba(0,0,0,0.5)'
+    x-show='isDialogOpen'
+    :class="{ 'absolute inset-0 z-10 flex items-start justify-center': isDialogOpen }"
+  >
+    <!-- dialog -->
+    <div
+      class='bg-white shadow-2xl m-4 sm:m-8 pt-500'
+      x-show='isDialogOpen'
+      @click.away='isDialogOpen = false'
+    >
+      <div class='flex justify-between items-center border-b p-2 text-xl'>
+        <h6 class='text-xl font-bold'>Instructions</h6>
+        <button type='button' @click='isDialogOpen = false'>✖</button>
+      </div>
+      <div class='p-2'>
+        <aside class='max-w-lg mt-4 p-4 bg-yellow-100 border border-yellow-500'>
+          <h1 class="text-center">
+            The Age Old Trolley Problem
+            <br>
+            -"There is a runaway trolley barreling down the railway tracks. Ahead, on the tracks, there are five people tied up and unable to move.
+            The trolley is headed straight for them. You are standing some distance off in the train yard, next to a lever. 
+            If you pull this lever, the trolley will switch to a different set of tracks. However, you notice that there is one person on the side track.
+            You have two options: Do nothing and allow the trolley to kill the five people on the main track | OR | Pull the lever, diverting the trolley 
+            onto the side track where it will kill one person. Which is the more ethical option? Or, more simply: What is the right thing to do?"
+            <br>
+            <br>
+            This time, we're changing things up!
+            You will be presented with brand new trolley dillemas, each requiring one of two solutions. 
+            Decide the outcomes by clicking the one you want to "Save".
+             If you'd like to create your own options, click on My Profile to get started adding your own CREATIVE choices.
+             The more difficult the choices you create, the more fun the user experience becomes.</h1>
+        </aside>
+      </div>
+    </div><!-- /dialog -->
+  </div><!-- /overlay -->
+
+</rules>

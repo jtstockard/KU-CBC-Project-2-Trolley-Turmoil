@@ -9,58 +9,41 @@
       rel="stylesheet"
       href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
     />
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+  integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+  crossorigin="anonymous"></script>
   </head>
   <body class="bg-blue-100">
     <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
         <div class="flex items-center flex-shrink-0 text-white mr-6">
           <span class="font-semibold text-xl tracking-tight">Trolley Turmoil</span>
         </div>
-        <a href="/" class="block mt-4 mr-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">Home</a>
+        
         <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
             {{#if loggedIn}} 
+            <a href="/" class="block mt-4 mr-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">Home</a>
             <button id="logout-btn" class="block mt-4 mr-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">Logout</button>
             <script src="/js/logout.js"></script>
+            <a href="/profile/{{id}}" class="block mt-4 mr-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+              My Profile
+            </a>
             {{else}} 
             <a href="/login" id="login-btn" class="block mt-4 mr-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">Login</a>
             <a href="/register" class="block mt-4 mr-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
               Register
             </a>
             {{/if}}
-            <a href="/profile" class="block mt-4 mr-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
-              My Profile
-            </a>
+            
         </div>
             <div class="flex justify-end">{{#if loggedIn}}
       <p class="text-white">Welcome, {{username}}!</p>
       {{/if}}</div>
       </nav>
-      
-      {{!-- 
-    {{!-- <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        User Registry
-      </h1>
-      <!-- TODO: Add a comment describing the functionality of this helper
-      {{#if logged_in}}
-        <nav>
-          <button class="btn" id="logout">logout</button>
-        </nav>
-      {{/if}}-->
-    </header> --}}
     <main class="container container-fluid mt-5">
       {{{body}}}
     </main>
-    <footer>
-    </footer>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 <script>
-var app = new Vue({
-  el: '#app',
-  data() {
-    return{
-      showModal: false,
-    }
-  }
-})
   </body>
 </html>

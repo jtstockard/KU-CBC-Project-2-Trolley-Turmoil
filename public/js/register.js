@@ -17,10 +17,10 @@ registerForm.addEventListener("submit", (e) => {
   
     })
     .then(response => response.json())
-    .then(data => console.log(data));
+    .then(data => {
+      console.log(data);
+      // [TODO] Add error handling
+      window.location.href = "/";
+    });
     
-})
-
-$('#registerBtn').click(function(){
-  window.location.href="/login"
 })

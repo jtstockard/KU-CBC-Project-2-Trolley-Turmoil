@@ -1,25 +1,45 @@
-const router = require("express").Router();
-const sequelize = require("../../config/connection");
-const { Question } = require("../../models");
-
-router.get("/", (req, res) => {
-  console.log("Getting Questions");
-  Question.findAll({}).then(dbData => {
-    const randomIndex = Math.floor(Math.random()*dbData.length)
+const router = require('express').Router();
+const sequelize = require('../../config/connection');
+const { Question } = require('../../models');
+const seedQuestions = require('../../seeds/questions-seeds');
+const { Op } = require('sequelize');
+router.get('/', (req, res) => {
+  console.log('Getting Questions');
+  Question.findAll({}).then((dbData) => {
+    const randomIndex = Math.floor(Math.random() * dbData.length);
     res.status(200).json(dbData[randomIndex]);
-  })
+  });
 });
-router.get("/random-answerable", (req, res) => {
-  console.log("Getting Random Answerable Question (that has not been answered yet)");
-  // SELECT * 
+router.post('/random-answerable', (req, res) => {
+  console.log(
+    'Getting Random Answerable Question (that has not been answered yet)'
+  );
+  // SELECT *
   // FROM questions
   // WHERE questions.id NOT IN (SELECT question_id FROM answers WHERE answers.user_id = #{loggedInUser.id})
   // ORDER BY RAND()
-  // LIMIT 1; 
-  Question.findOne({order: sequelize.random()}).then(dbData => {
+  // LIMIT 1;
+  Question.findOne({ 
+    order: sequelize.random(),
+    where: {
+      id: {
+        [Op.notIn]: req.body,
+      }
+    }
+   }).then((dbData) => {
     res.status(200).json(dbData);
   });
 });
+router.post('/', (req, res) => {
+  Question.create({
+    first_choice: req.body.first_choice,
+    second_choice: req.body.second_choice,
+    user_id: req.session.user_id
+  }).then((dbQuestionData) => {
+    res.json(dbQuestionData);
+  });
+});
+
 // router.post("/login", async (req, res) => {
 //   try {
 //     // Find the user who matches the posted e-mail address
