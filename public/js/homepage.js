@@ -6,7 +6,37 @@ fetch('/api/questions/random-answerable')
     console.log(data);
     showQuestion(data);
   });
+  
 
+
+  document.getElementById("buttonA").addEventListener("click", buttonActionA);
+  function buttonActionA() {
+    console.log("Button A Clicked")
+  }
+
+  $("buttonA").click(function (e) {
+    console.log("Yo")
+  });
+
+//   function showNextQuestionA() {
+//     document.getElementById('answerable-question-choice-1').questionElement1.display = "block";
+//  }
+  document.getElementById("buttonB").addEventListener("click", buttonActionB);
+  function buttonActionB() {
+   console.log("Button B Clicked")
+  }
+
+// //Handle our A button click
+//   $("#buttonA").click(function (e) {
+// //     // Prevents the form from triggering its default behavior
+// //     e.preventDefault();
+//     console.log("Button A clicked");
+
+// //Handle our B button click
+// $("#buttonB").click(function (e) {
+// //   // Prevents the form from triggering its default behavior
+// //   e.preventDefault();
+//   console.log("Button B clicked");
 
 function showQuestion(question) {
   console.log(question)
